@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('inventory_form.html')
+    return render_template('index.html')
 
 @app.route('/submit_inventory', methods=['POST'])
 def submit_inventory():
@@ -27,7 +27,7 @@ def submit_inventory():
     # Append new data to the DataFrame
     new_data = pd.DataFrame([[material, date, timein, timeout, location, personal_name, brand, client_details]],
                             columns=['Material', 'Date', 'Time In', 'Time Out', 'Location', 'Personal Name', 'Brand', 'Client Details Received'])
-    inventory_df = inventory_df._append(new_data, ignore_index=True)
+    inventory_df = inventory_df.append(new_data, ignore_index=True)
 
     # Write DataFrame to Excel file
     inventory_df.to_excel('inventory.xlsx', index=False)
