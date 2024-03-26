@@ -9,7 +9,7 @@
 
 <h2>Inventory Form</h2>
 
-<form action="/submit_inventory" method="post">
+<form action="{{ url_for('submit_inventory') }}" method="post">
   <label for="material">Material:</label><br>
   <input type="text" id="material" name="material"><br>
   
