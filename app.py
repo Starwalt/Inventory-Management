@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 
 app = Flask(__name__)
@@ -32,7 +32,7 @@ def submit_inventory():
     # Write DataFrame to Excel file
     inventory_df.to_excel('inventory.xlsx', index=False)
 
-    return 'Data submitted successfully!'
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)
